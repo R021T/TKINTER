@@ -5,7 +5,7 @@ arr2 ={'apple':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/apple.jpg",
        'bell pepper':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/bell pepper.jpg",
        'cabbage':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/cabbage.jpg",
        'capsicum':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/capsicum.jpg",
-       'carrot':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/carrot.jpg",
+       'carrot':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/carrot.png",
        'cauliflower':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/cauliflower.jpg",
        'chilli pepper':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/chilli.jpg",
        'corn':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/corn.jpg",
@@ -17,8 +17,8 @@ arr2 ={'apple':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/apple.jpg",
        'jalepeno':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/jalapeno.jpg",
        'kiwi':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/kiwi.jpg",
        'lemon':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/lemon.jpg",
-       'lettuce':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/lettuce.jpg",
-       'mango':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/mango.jpg",
+       'lettuce':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/lettuce.jpeg",
+       'mango':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/mango.png",
        'onion':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/onion.jpg",
        'orange':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/orange.jpg",
        'paprika':"C:/Users/rcviu/OneDrive/Desktop/mini-main/images1/paprika.jpg",
@@ -42,17 +42,35 @@ top = Tk()
 top.geometry("700x350")
 top.title("Automatic Weighing Machine")
 
-textBox = Text(top,height=2,width=50,highlightbackground="red",highlightthickness=2).place(x=20,y=20)
-b0=Button(top,bg="red",width=20,height=2,text="SEARCH",fg="white",activeforeground="red").place(x=450,y=20)
+name=StringVar()
+
+def search():
+       f2=Frame(top,bg="green",width=230,height=250).place(x=450,y=80)
+
+       #image4
+       p4=Image.open(arr2[name.get()])
+       p4=p4.resize((70,70),Image.ANTIALIAS)
+       global photoimg4
+       photoimg4=ImageTk.PhotoImage(p4)
+       lbl_img4=Label(image=photoimg4,background="white")
+       lbl_img4.place(x=510,y=90,width=110,height=70)
+       box4=Text(f2,height=2,width=25)
+       box4.insert(INSERT,name.get())
+       box4.config(state="disabled")
+       box4.place(x=463,y=190)
+       b4=Button(f2,height=2,width=5,text="+").place(x=543,y=270)
+
+textBox = Entry(top,textvariable=name,font=('Arial 20'),width=27,highlightbackground="green",highlightthickness=2).place(x=20,y=20)
+b0=Button(top,bg="red",width=20,height=2,text="SEARCH",fg="white",activeforeground="red",command=search).place(x=450,y=20)
 
 f1=Frame(top,bg="red",width=410,height=250).place(x=20,y=80)
 
 #image1
 p1=Image.open(arr2[arr[0]])
-p1=p1.resize((130,130),Image.ANTIALIAS)
-photoimg=ImageTk.PhotoImage(p1)
-lbl_img=Label(image=photoimg)
-lbl_img.place(x=30,y=90,width=110,height=70)
+p1=p1.resize((70,70),Image.ANTIALIAS)
+photoimg1=ImageTk.PhotoImage(p1)
+lbl_img1=Label(image=photoimg1,background="white")
+lbl_img1.place(x=30,y=90,width=110,height=70)
 box1=Text(f1,height=2,width=25)
 box1.insert(INSERT,arr[0])
 box1.config(state="disabled")
@@ -61,9 +79,9 @@ b1=Button(f1,height=2,width=5,text="+").place(x=370,y=110)
 
 #image2
 p2=Image.open(arr2[arr[1]])
-p2=p2.resize((130,130),Image.ANTIALIAS)
+p2=p2.resize((70,70),Image.ANTIALIAS)
 photoimg2=ImageTk.PhotoImage(p2)
-lbl_img2=Label(image=photoimg2)
+lbl_img2=Label(image=photoimg2,background="white")
 lbl_img2.place(x=30,y=170,width=110,height=70)
 box2=Text(f1,height=2,width=25)
 box2.insert(INSERT,arr[1])
@@ -73,15 +91,14 @@ b2=Button(f1,height=2,width=5,text="+").place(x=370,y=190)
 
 #image3
 p3=Image.open(arr2[arr[2]])
-p3=p3.resize((130,130),Image.ANTIALIAS)
+p3=p3.resize((70,70),Image.ANTIALIAS)
 photoimg3=ImageTk.PhotoImage(p3)
-lbl_img3=Label(image=photoimg3)
+lbl_img3=Label(image=photoimg3,background="white")
 lbl_img3.place(x=30,y=250,width=110,height=70)
 box3=Text(f1,height=2,width=25)
 box3.insert(INSERT,arr[2])
 box3.config(state="disabled")
 box3.place(x=150,y=270)
 b3=Button(f1,height=2,width=5,text="+").place(x=370,y=270)
-
 
 top.mainloop()
